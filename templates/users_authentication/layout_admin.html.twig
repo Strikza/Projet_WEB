@@ -1,0 +1,17 @@
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div id="upper_band">
+        <h1>Admin</h1>
+    </div>
+    <div id="menu">
+        {% block menu %}{% endblock %}
+    </div>
+    <div id="body_page">
+        {% block body_page %}{% endblock %}
+    </div>
+    <div id="lower_band">
+        {% block footer %}{% endblock %}
+    </div>
+{% endblock %}
