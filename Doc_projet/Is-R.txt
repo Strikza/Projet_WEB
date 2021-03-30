@@ -1,0 +1,2 @@
+- ./routes/service.yaml :
+	- l.7 : user: '<utilisateur connecté>'
