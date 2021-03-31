@@ -1,0 +1,27 @@
+{% extends 'main/main_layout.html.twig' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div id="upper_band">
+        <h1>Admin</h1>
+    </div>
+    <div id="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li>TODO : mettre le nombre d'article disponible</li>
+            <li>TODO : faire le menu</li>
+            <li><a href="https://fr.wikipedia.org/wiki/Amour_et_Amn%C3%A9sie">Amour et Amnésie</a></li>
+        </ul>
+    </div>
+    <div id="menu">
+        {% block menu %}{% endblock %}
+    </div>
+    <div id="body_page">
+        {% block body_page %}{% endblock %}
+    </div>
+    <div id="lower_band">
+        {{ include('footer/lower_band.html.twig') }}
+    </div>
+{% endblock %}

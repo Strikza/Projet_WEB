@@ -1,3 +1,5 @@
+{% extends 'main/main_layout.html.twig' %}
+
 {% block stylesheets %}
 {% endblock %}
 
@@ -8,13 +10,14 @@
     <div id="menu">
         <h2>Menu</h2>
         <ul>
-            <li><p>Il y a </p><p> articles en ventes</p></li>
+            <li>TODO : mettre le nombre d'article disponible</li>
+            <li>TODO : faire le menu</li>
         </ul>
     </div>
     <div id="body_page">
         {% block body_page %}{% endblock %}
     </div>
     <div id="lower_band">
-        {% block footer %}{% endblock %}
+        {{ include('footer/lower_band.html.twig') }}
     </div>
 {% endblock %}
