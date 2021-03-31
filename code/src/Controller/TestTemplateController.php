@@ -27,4 +27,15 @@ class TestTemplateController extends AbstractController
 
         return $this->render('/reception/reception.html.twig', $args);
     }
+
+    /**
+     * @Route(
+     *     "/test",
+     *     name="test_template_base"
+     * )
+     */
+    public function testAction(): Response
+    {
+        return $this->render('main/main_layout.html.twig');
+    }
 }

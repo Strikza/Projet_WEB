@@ -1,0 +1,12 @@
+{% if utilisateur is null %}
+    {#  <img src="{{ asset('image/banner_top_visitor.jpg') }}" alt="Bandeau supérieur pour un utilisateur non authentifié"> #}
+    Banner top (visitor)
+{% else %}
+    {% if utilisateur.isadmin == 1 %}
+        {# <img src="{{ asset('image/banner_top_administrator.jpg') }}" alt="Bandeau supérieur pour un administrateur"> #}
+        Banner top (administrator)
+    {% else %}
+        {# <img src="{{ asset('image/banner_top_user.jpg') }}" alt="Bandeau supérieur pour un utilisateur authentifié"> #}
+        Banner top (user)
+    {% endif %}
+{% endif %}
