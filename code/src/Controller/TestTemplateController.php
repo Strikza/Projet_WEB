@@ -19,8 +19,12 @@ class TestTemplateController extends AbstractController
      *     name="test_template"
      * )
      */
-    public function indexAction(): Response
+    public function testTemplateAction(): Response
     {
-        return $this->render('/users_authentification/layout_admin.html.twig');
+        $args = array(
+            "user" => $this->getParameter('user')
+        );
+
+        return $this->render('/reception/reception.html.twig', $args);
     }
 }

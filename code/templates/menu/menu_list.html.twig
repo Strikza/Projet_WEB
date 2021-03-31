@@ -1,4 +1,25 @@
+<h2>Menu</h2>
+
+<p>-> TODO : mettre le nombre d'article disponible</p>
+
 <ul>
-    <li>TODO : mettre le nombre d'article disponible</li>
-    <li>TODO : faire le menu</li>
+    {% if user is null %}
+        <li><a>Connexion</a></li>
+    {% else %}
+        <li><a>Déconnexion</a></li>
+    {% endif %}
+
+    <li><a>Page d'accueil</a></li>
+
+    {% if user is null %}
+        <li><a>Créer un compte</a></li>
+    {% elseif user == 0 %}
+        <li><a>Gérer les clients</a></li>
+        <li><a>Créer un produit</a></li>
+        <li><a href="https://fr.wikipedia.org/wiki/Amour_et_Amn%C3%A9sie">Amour et Amnésie</a></li>
+    {% else %}
+        <li><a>Gérer le profil</a></li>
+        <li><a>Liste des produits</a></li>
+        <li><a>Gérer le panier</a></li>
+    {% endif %}
 </ul>

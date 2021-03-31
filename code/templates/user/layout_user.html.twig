@@ -1,0 +1,31 @@
+{% extends 'main/main_layout.html.twig' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div id="upper_band">
+        <header>
+
+        {% if user is null %}
+            <h1>Visitor</h1>
+        {% elseif user == 0 %}
+            <h1>Admin</h1>
+        {% else %}
+            <h1>User</h1>
+        {% endif %}
+
+        </header>
+    </div>
+    <div id="menu">
+        {{ include('menu/menu_list.html.twig') }}
+    </div>
+    <div id="body_page">
+        {% block body_page %}{% endblock %}
+    </div>
+    <div id="lower_band">
+        <footer>
+            <img src="{{ asset('img/footer/footer.png') }}" alt="Bandeau inférieur du site"/>
+        </footer>
+    </div>
+{% endblock %}
