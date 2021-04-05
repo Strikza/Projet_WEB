@@ -2,29 +2,27 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class HomeController
+ * Class CartController
  * @package App\Controller
+ * @Route("/cart")
  */
-class HomeController extends AbstractController
+
+class CartController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/add", name="cart_add")
      */
-    public function homeAction(): Response
+    public function addAction(): Response
     {
         $id = $this->getParameter('id');
 
         $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
+        $userRepository = $em->getRepository('App::Cart');
         $user = $userRepository->find($id);
-
-        $args = ['user' => $user];
-        return $this->render('home/home.html.twig',$args);
     }
 }

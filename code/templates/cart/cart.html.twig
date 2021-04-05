@@ -1,17 +1,17 @@
 {% extends 'main/main_layout.html.twig' %}
 
-{% block title %} Accueil {% endblock %}
+{% block title %} Panier {% endblock %}
 
 {% block stylesheets_2 %} {% endblock %}
 
 {% block content %}
     Bonjour à vous
     {% if user is null %}
-     ! <br>
+        ! <br>
     {% elseif  user.isadmin %}
-     administrateur ! <br>
+        administrateur ! <br>
     {% else %}
-     {{ user.firstname }} ! <br>
+        {{ user.firstname }} ! <br>
     {% endif %}
     Bienvenue sur le site de commande de Stud'eCook ! <br>
     Ici vous trouverez des aliments à commander et bien plus ;)
