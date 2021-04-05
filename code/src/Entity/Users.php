@@ -16,7 +16,6 @@ class Users
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-
     private $id;
 
     /**
