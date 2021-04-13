@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Stud'eCook</a>
+    <a class="navbar-brand" href="{{ path('home_home') }}">Stud'eCook</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,39 +10,39 @@
                 <a class="nav-link" > 4 acticle(s) disponible(s)</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('home') }}" >Accueil</a>
+                <a class="nav-link" href="{{ path('home_home') }}" >Accueil</a>
             </li>
             {% if user is null %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('connection') }}" >Connexion</a>
+                    <a class="nav-link" href="{{ path('connection_connection') }}" >Connexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" >Inscription</a>
+                    <a class="nav-link" href="{{ path('account_create') }}" >Inscription</a>
                 </li>
             {% else %}
                 {% if user.isadmin %}
                     <li class="nav-item">
-                        <a class="nav-link" >Gérer les utilisateurs</a>
+                        <a class="nav-link" href="{{ path('account_manage') }}" >Gérer les utilisateurs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" >Créer un produit</a>
+                        <a class="nav-link" href="{{ path('product_add') }}" >Créer un produit</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://fr.wikipedia.org/wiki/Amour_et_Amn%C3%A9sie">Amour et Amnésie</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" >Produits</a>
+                        <a class="nav-link" href="{{ path('product_list') }}" >Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" >Panier</a>
+                        <a class="nav-link" href="{{ path('cart_display') }}" >Panier</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" >Profil</a>
+                        <a class="nav-link" href="{{ path('account_edit') }}" >Profil</a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('home') }}" >Déconnexion</a>
+                    <a class="nav-link" href="{{ path('connection_disconnection') }}" >Déconnexion</a>
                 </li>
             {% endif %}
         </ul>

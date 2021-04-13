@@ -7,16 +7,37 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class ProductController
+ * Class AccountController
  * @package App\Controller
- * @Route ("/product")
+ * @Route("/account")
  */
-class ProductController extends AbstractController
+
+class AccountController extends AbstractController
 {
     /**
-     * @Route("/", name="product_list")
+     * @Route("/create", name="account_create")
      */
-    public function listAction(): Response
+    public function createAction(): Response
+    {
+        $id = $this->getParameter('id');
+
+        $em = $this->getDoctrine()->getManager();
+        $userRepository = $em->getRepository('App:Users');
+        $user = $userRepository->find($id);
+
+        //Vérifie que l'utilisateur n'est pas authentifié
+        if(!is_null($user)) {
+            throw $this->createNotFoundException('Vous êtes connecté(e) à un compte, veuillez vous déconnecter !');
+        }
+
+        $args = ['user' => $user];
+        return $this->render('account/create_account.html.twig',$args);
+    }
+
+    /**
+     * @Route("/edit", name="account_edit")
+     */
+    public function editAction(): Response
     {
         $id = $this->getParameter('id');
 
@@ -29,13 +50,14 @@ class ProductController extends AbstractController
             throw $this->createNotFoundException('Vous devez être connecté(e) comme client pour avoir accès à cette page !');
         }
 
-        return $this->render('product/list_product.html.twig');
+        $args = ['user' => $user];
+        return $this->render('account/edit_account.html.twig',$args);
     }
 
     /**
-     * @Route("/add", name="product_add")
+     * @Route("/manage", name="account_manage")
      */
-    public function addAction(): Response
+    public function manageAction(): Response
     {
         $id = $this->getParameter('id');
 
@@ -48,6 +70,7 @@ class ProductController extends AbstractController
             throw $this->createNotFoundException('Vous devez être connecté(e) comme administrateur pour avoir accès à cette page !');
         }
 
-        return $this->render('product/add_product.html.twig');
+        $args = ['user' => $user];
+        return $this->render('account/manage_account.html.twig',$args);
     }
 }

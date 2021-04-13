@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConnectionController extends AbstractController
 {
     /**
-     * @Route("/co", name="connection")
+     * @Route("/co", name="connection_connection")
      */
     public function connectionAction(): Response
     {
@@ -25,15 +25,22 @@ class ConnectionController extends AbstractController
         $userRepository = $em->getRepository('App:Users');
         $user = $userRepository->find($id);
 
-        $args = ['user' => $user];
+        //Vérifie que l'utilisateur n'est pas authentifié
+        if(!is_null($user)) {
+            throw $this->createNotFoundException('Vous êtes déjà connecté(e) ;)');
+        }
 
-        return $this->render('guest/connection.html.twig',$args);
+        $args = ['user' => $user];
+        return $this->render('account/connection_account.html.twig',$args);
     }
 
+    /**
+     * @Route("/disco", name="connection_disconnection")
+     */
     public function disconnectionAction(): Response
     {
         $this->addFlash('info','Vous avez bien été déconnecté(e) !');
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('home_home');
     }
 }

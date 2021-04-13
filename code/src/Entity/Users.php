@@ -113,12 +113,12 @@ class Users
         return $this;
     }
 
-    public function getIsadmin(): ?bool
+    public function getIsAdmin(): ?bool
     {
         return $this->isadmin;
     }
 
-    public function setIsadmin(bool $isadmin): self
+    public function setIsAdmin(bool $isadmin): self
     {
         $this->isadmin = $isadmin;
 
