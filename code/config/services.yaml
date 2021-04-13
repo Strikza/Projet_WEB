@@ -4,10 +4,10 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    id: 2
-# null : visitor
-# 0 : admin
-# [1-n] : connected user
+    id: 0
+# 0 : visitor
+# 1 : admin
+# [2-n] : connected user
 
 services:
     # default configuration for services in *this* file
