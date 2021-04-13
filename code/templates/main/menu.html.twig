@@ -10,25 +10,17 @@
                 <a class="nav-link" > 4 acticle(s) disponible(s)</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" >Produits
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" >Panier</a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" >Accueil</a>
+                <a class="nav-link" href="{{ path('home') }}" >Accueil</a>
             </li>
             {% if user is null %}
                 <li class="nav-item">
-                    <a class="nav-link" >Connexion</a>
+                    <a class="nav-link" href="{{ path('connection') }}" >Connexion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" >Inscription</a>
                 </li>
             {% else %}
-                {% if user == 0 %}
+                {% if user.isadmin %}
                     <li class="nav-item">
                         <a class="nav-link" >Gérer les utilisateurs</a>
                     </li>
@@ -40,17 +32,17 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" >Profil</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" >Produits</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" >Panier</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" >Profil</a>
+                    </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" >Déconnexion</a>
+                    <a class="nav-link" href="{{ path('home') }}" >Déconnexion</a>
                 </li>
             {% endif %}
         </ul>

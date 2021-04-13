@@ -2,21 +2,21 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class HomeController
+ * Class MenuController
  * @package App\Controller
  */
-class HomeController extends AbstractController
+
+class MenuController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @return Response
      */
-    public function homeAction(): Response
+    public function menuAction(): Response
     {
         $id = $this->getParameter('id');
 
@@ -25,6 +25,8 @@ class HomeController extends AbstractController
         $user = $userRepository->find($id);
 
         $args = ['user' => $user];
-        return $this->render('common/home.html.twig',$args);
+
+        return $this->render('main/menu.html.twig',$args);
+
     }
 }

@@ -2,21 +2,22 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class HomeController
+ * Class ConnectionController
  * @package App\Controller
+ * @Route("/connection")
  */
-class HomeController extends AbstractController
+
+class ConnectionController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/co", name="connection")
      */
-    public function homeAction(): Response
+    public function connectionAction(): Response
     {
         $id = $this->getParameter('id');
 
@@ -25,6 +26,14 @@ class HomeController extends AbstractController
         $user = $userRepository->find($id);
 
         $args = ['user' => $user];
-        return $this->render('common/home.html.twig',$args);
+
+        return $this->render('guest/connection.html.twig',$args);
+    }
+
+    public function disconnectionAction(): Response
+    {
+        $this->addFlash('info','Vous avez bien été déconnecté(e) !');
+
+        return $this->redirectToRoute('home');
     }
 }
