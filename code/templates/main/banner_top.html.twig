@@ -1,9 +1,11 @@
+<header>
 {% if user is null %}
     <img src="{{ asset('img/header/header_visitor.png') }}" alt="Bandeau supérieur pour un utilisateur non authentifié">
 {% else %}
     {% if user.isadmin == 1 %}
-        <img src="{{ asset('img/header/header_admin.jpg') }}" alt="Bandeau supérieur pour un administrateur">
+        <img src="{{ asset('img/header/header_admin.png') }}" alt="Bandeau supérieur pour un administrateur">
     {% else %}
         <img src="{{ asset('img/header/header_user.png') }}" alt="Bandeau supérieur pour un utilisateur authentifié">
     {% endif %}
 {% endif %}
+</header>

@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d3dc0ed-f061-4b46-ae1c-6bd195fbf621" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/code/public/img/header/header_visitor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Projet_WEB.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Projet_WEB.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c94e99ad-f445-4d5f-bcd9-9e39fb1acc02.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c94e99ad-f445-4d5f-bcd9-9e39fb1acc02.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/code/public/css/base/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/code/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/img/footer/._footer.png" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/img/footer/._footer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/img/footer/footer.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/templates/main/banner_buttom.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/main/banner_bottom.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/public/img/header/._header_admin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/public/img/header/._header_user.png" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/img/header/._header_user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/public/img/header/header_admin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/templates/main/banner_bottom.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/main/banner_bottom.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/templates/main/banner_top.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/main/banner_top.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/templates/main/main_layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/main/main_layout.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +164,7 @@
       <workItem from="1617558506607" duration="601000" />
       <workItem from="1617560401761" duration="38000" />
       <workItem from="1618298662555" duration="44000" />
-      <workItem from="1618298707868" duration="3475000" />
+      <workItem from="1618298707868" duration="7195000" />
     </task>
     <servers />
   </component>
