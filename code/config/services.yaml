@@ -5,9 +5,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     id: 2
-# null : visitor
-# 0 : admin
-# [1-n] : connected user
+# 0 : visitor
+# 1 : admin
+# [2-n] : connected user
 
 services:
     # default configuration for services in *this* file
