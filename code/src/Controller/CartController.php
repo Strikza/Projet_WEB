@@ -27,9 +27,7 @@ class CartController extends UtilityController
         $user = $userRepository->find($id);
 
         //Vérifie si l'utilisateur est un client
-        if(is_null($user) || $user->getIsAdmin()) {
-            throw $this->createNotFoundException('Vous devez être connecté(e) comme client pour avoir accès à cette page !');
-        }
+        $this->isConnect($user, 2, $this);
 
         return $this->render('cart/display_cart.html.twig');
     }

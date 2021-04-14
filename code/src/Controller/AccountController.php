@@ -28,9 +28,6 @@ class AccountController extends UtilityController
         $user = $userRepository->find($id);
 
         //Vérifie que l'utilisateur n'est pas authentifié
-        /*if(!is_null($user)) {
-            throw $this->createNotFoundException('Vous êtes connecté(e) à un compte, veuillez vous déconnecter !');
-        }*/
         $this->isConnect($user, 0, $this);
 
         $args = ['user' => $user];
@@ -49,9 +46,6 @@ class AccountController extends UtilityController
         $user = $userRepository->find($id);
 
         //Vérifie si l'utilisateur est un client
-        /*if(is_null($user) || $user->getIsAdmin()) {
-            throw $this->createNotFoundException('Vous devez être connecté(e) comme client pour avoir accès à cette page !');
-        }*/
         $this->isConnect($user, 2, $this);
 
         $args = ['user' => $user];
@@ -70,9 +64,6 @@ class AccountController extends UtilityController
         $user = $userRepository->find($id);
 
         //Vérifie si l'utilisateur est un administrateur
-        /*if(is_null($user) || !($user->getIsAdmin())) {
-            throw $this->createNotFoundException('Vous devez être connecté(e) comme administrateur pour avoir accès à cette page !');
-        }*/
         $this->isConnect($user, 1, $this);
 
         $args = ['user' => $user];

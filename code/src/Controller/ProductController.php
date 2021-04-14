@@ -25,9 +25,7 @@ class ProductController extends UtilityController
         $user = $userRepository->find($id);
 
         //Vérifie si l'utilisateur est un client
-        if(is_null($user) || $user->getIsAdmin()) {
-            throw $this->createNotFoundException('Vous devez être connecté(e) comme client pour avoir accès à cette page !');
-        }
+        $this->isConnect($user, 2, $this);
 
         $productRepository = $em->getRepository('App:Products');
         $products = $productRepository->findAll();
@@ -48,9 +46,7 @@ class ProductController extends UtilityController
         $user = $userRepository->find($id);
 
         //Vérifie si l'utilisateur est un administrateur
-        if(is_null($user) || !($user->getIsAdmin())) {
-            throw $this->createNotFoundException('Vous devez être connecté(e) comme administrateur pour avoir accès à cette page !');
-        }
+        $this->isConnect($user, 1, $this);
 
         return $this->render('product/add_product.html.twig');
     }
