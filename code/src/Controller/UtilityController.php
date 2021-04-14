@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UtilityController extends AbstractController
 {
+
     public function isConnect($user, $type, $controller){
         switch ($type){
             case 0 :

@@ -14,37 +14,37 @@ class Users
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="pk")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30, unique=true)
+     * @ORM\Column(type="string", length=30, name="identifiant", options={"comment":"sert de login (doit être unique)"}, unique=true)
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string", length=64, name="motdepasse", options={"comment":"mot de passe crypté : il faut une taille assez grande pour ne pas le tronquer"})
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=30, name="nom", options={"default"=null}, nullable=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=30, name="prenom", options={"default"=null}, nullable=true)
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date", name="anniversaire", options={"default"=null}, nullable=true)
      */
     private $birth;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="smallint", options={"default"=0}, options={"comment":"type booléen"})
      */
     private $isadmin;
 
@@ -113,12 +113,12 @@ class Users
         return $this;
     }
 
-    public function getIsAdmin(): ?bool
+    public function getIsAdmin(): ?int
     {
         return $this->isadmin;
     }
 
-    public function setIsAdmin(bool $isadmin): self
+    public function setIsAdmin(int $isadmin): self
     {
         $this->isadmin = $isadmin;
 
