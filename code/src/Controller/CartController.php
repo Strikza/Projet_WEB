@@ -20,14 +20,11 @@ class CartController extends UtilityController
      */
     public function displayAction(): Response
     {
-        $id = $this->getParameter('id');
-
-        $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
-        $user = $userRepository->find($id);
+        /* Configure l'attribut 'user' en fonction de l'utilisateur actuellement connecté */
+        $this->setUser();
 
         //Vérifie si l'utilisateur est un client
-        $this->isConnect($user, 2, $this);
+        $this->isConnect($this->user, 2, $this);
 
         return $this->render('cart/display_cart.html.twig');
     }
@@ -36,11 +33,11 @@ class CartController extends UtilityController
      */
     public function addAction(): Response
     {
-        $id = $this->getParameter('id');
+        /* Configure l'attribut 'user' en fonction de l'utilisateur actuellement connecté */
+        $this->setUser();
 
-        $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
-        $user = $userRepository->find($id);
+        //Vérifie si l'utilisateur est un client
+        $this->isConnect($this->user, 2, $this);
 
         return $this->render('user/cart.html.twig');
     }

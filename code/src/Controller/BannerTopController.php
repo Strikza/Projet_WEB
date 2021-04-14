@@ -17,13 +17,10 @@ class BannerTopController extends UtilityController
      */
     public function bannerTopAction(): Response
     {
-        $id = $this->getParameter('id');
+        /* Configure l'attribut 'user' en fonction de l'utilisateur actuellement connecté */
+        $this->setUser();
 
-        $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
-        $user = $userRepository->find($id);
-
-        $args = ['user' => $user];
+        $args = ['user' => $this->user];
 
         return $this->render('/main/banner_top.html.twig', $args);
     }

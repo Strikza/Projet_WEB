@@ -5,9 +5,20 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Users;
 
 class UtilityController extends AbstractController
 {
+    protected $user;
+
+    public function setUser(){
+        $id = $this->getParameter('id');
+
+        $em = $this->getDoctrine()->getManager();
+        $userRepository = $em->getRepository('App:Users');
+        $this->user = $userRepository->find($id);
+    }
+
     public function isConnect($user, $type, $controller){
         switch ($type){
             case 0 :
@@ -19,13 +30,13 @@ class UtilityController extends AbstractController
             //Vérifie si l'utilisateur est un administrateur
             case 1 :
                 if(is_null($user) || !($user->getIsAdmin())) {
-                    throw $controller->createNotFoundException('Vous devez être connecté(e) comme administrateur pour avoir accès à cette page !');
+                    throw $controller->createNotFoundException('Vous devez être connecté(e) en tant qu\'administrateur pour avoir accès à cette page !');
                 }
                 break;
             //Vérifie si l'utilisateur est un client
             default :
                 if(is_null($user) || $user->getIsAdmin()) {
-                    throw $controller->createNotFoundException('Vous devez être connecté(e) comme client pour avoir accès à cette page !');
+                    throw $controller->createNotFoundException('Vous devez être connecté(e) en tant que client pour avoir accès à cette page !');
                 }
         }
     }
