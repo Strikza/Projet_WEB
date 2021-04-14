@@ -26,9 +26,7 @@ class ConnectionController extends UtilityController
         $user = $userRepository->find($id);
 
         //Vérifie que l'utilisateur n'est pas authentifié
-        if(!is_null($user)) {
-            throw $this->createNotFoundException('Vous êtes déjà connecté(e) ;)');
-        }
+        $this->isConnect($user, 0, $this);
 
         $args = ['user' => $user];
         return $this->render('account/connection_account.html.twig',$args);
