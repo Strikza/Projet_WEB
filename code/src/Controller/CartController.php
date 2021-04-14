@@ -20,11 +20,8 @@ class CartController extends UtilityController
      */
     public function displayAction(): Response
     {
-        /* Configure l'attribut 'user' en fonction de l'utilisateur actuellement connecté */
-        $this->setUser();
-
-        //Vérifie si l'utilisateur est un client
-        $this->isConnect($this->user, 2, $this);
+        //Vérifie que l'utilisateur est un client
+        $this->setRestriction(1);
 
         return $this->render('cart/display_cart.html.twig');
     }
@@ -33,11 +30,8 @@ class CartController extends UtilityController
      */
     public function addAction(): Response
     {
-        /* Configure l'attribut 'user' en fonction de l'utilisateur actuellement connecté */
-        $this->setUser();
-
-        //Vérifie si l'utilisateur est un client
-        $this->isConnect($this->user, 2, $this);
+        //Vérifie que l'utilisateur est un client
+        $this->setRestriction(1);
 
         return $this->render('user/cart.html.twig');
     }

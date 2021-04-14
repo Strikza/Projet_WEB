@@ -19,16 +19,10 @@ class ConnectionController extends UtilityController
      */
     public function connectionAction(): Response
     {
-        $id = $this->getParameter('id');
-
-        $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
-        $user = $userRepository->find($id);
-
         //Vérifie que l'utilisateur n'est pas authentifié
-        $this->isConnect($user, 0, $this);
+        $this->setRestriction(0);
 
-        $args = ['user' => $user];
+        $args = ['user' => $this->getUser()];
         return $this->render('account/connection_account.html.twig',$args);
     }
 

@@ -21,13 +21,10 @@ class AccountController extends UtilityController
      */
     public function createAction(): Response
     {
-        /* Configure l'attribut 'user' en fonction de l'utilisateur actuellement connecté */
-        $this->setUser();
-
         //Vérifie que l'utilisateur n'est pas authentifié
-        $this->isConnect($this->user, 0, $this);
+        $this->setRestriction( 0);
 
-        $args = ['user' => $this->user];
+        $args = ['user' => $this->getUser()];
         return $this->render('account/create_account.html.twig',$args);
     }
 
@@ -36,13 +33,10 @@ class AccountController extends UtilityController
      */
     public function editAction(): Response
     {
-        /* Configure l'attribut 'user' en fonction de l'utilisateur actuellement connecté */
-        $this->setUser();
+        //Vérifie que l'utilisateur est un client
+        $this->setRestriction(1);
 
-        //Vérifie si l'utilisateur est un client
-        $this->isConnect($this->user, 2, $this);
-
-        $args = ['user' => $this->user];
+        $args = ['user' => $this->getUser()];
         return $this->render('account/edit_account.html.twig',$args);
     }
 
@@ -51,13 +45,10 @@ class AccountController extends UtilityController
      */
     public function manageAction(): Response
     {
-        /* Configure l'attribut 'user' en fonction de l'utilisateur actuellement connecté */
-        $this->setUser();
+        //Vérifie que l'utilisateur est un administrateur
+        $this->setRestriction(2);
 
-        //Vérifie si l'utilisateur est un administrateur
-        $this->isConnect($this->user, 1, $this);
-
-        $args = ['user' => $this->user];
+        $args = ['user' => $this->getUser()];
         return $this->render('account/manage_account.html.twig',$args);
     }
 }

@@ -18,13 +18,7 @@ class HomeController extends UtilityController
      */
     public function homeAction(): Response
     {
-        $id = $this->getParameter('id');
-
-        $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
-        $user = $userRepository->find($id);
-
-        $args = ['user' => $user];
+        $args = ['user' => $this->getUser()];
         return $this->render('common/home.html.twig',$args);
     }
 }

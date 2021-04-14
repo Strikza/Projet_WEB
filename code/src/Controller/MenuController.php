@@ -18,15 +18,8 @@ class MenuController extends UtilityController
      */
     public function menuAction(): Response
     {
-        $id = $this->getParameter('id');
-
-        $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
-        $user = $userRepository->find($id);
-
-        $args = ['user' => $user];
+        $args = ['user' => $this->getUser()];
 
         return $this->render('main/menu.html.twig',$args);
-
     }
 }

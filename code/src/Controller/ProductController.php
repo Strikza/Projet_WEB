@@ -18,18 +18,13 @@ class ProductController extends UtilityController
      */
     public function listAction(): Response
     {
-        $id = $this->getParameter('id');
-
-        $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
-        $user = $userRepository->find($id);
-
         //Vérifie si l'utilisateur est un client
-        $this->isConnect($user, 2, $this);
+        $this->setRestriction( 1);
 
-        $productRepository = $em->getRepository('App:Products');
-        $products = $productRepository->findAll();
-        $args = array('products' => $products);
+
+        //Recupère le repertoire de produits
+        $productRepository = $this->getProductRepository();
+        $args = array('products' => $productRepository);
 
         return $this->render('product/list_product.html.twig',$args);
     }
@@ -39,15 +34,10 @@ class ProductController extends UtilityController
      */
     public function addAction(): Response
     {
-        $id = $this->getParameter('id');
-
-        $em = $this->getDoctrine()->getManager();
-        $userRepository = $em->getRepository('App:Users');
-        $user = $userRepository->find($id);
-
         //Vérifie si l'utilisateur est un administrateur
-        $this->isConnect($user, 1, $this);
+        $this->setRestriction(2);
 
         return $this->render('product/add_product.html.twig');
     }
+
 }
