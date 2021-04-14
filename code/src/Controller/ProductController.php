@@ -29,7 +29,11 @@ class ProductController extends AbstractController
             throw $this->createNotFoundException('Vous devez être connecté(e) comme client pour avoir accès à cette page !');
         }
 
-        return $this->render('product/list_product.html.twig');
+        $productRepository = $em->getRepository('App:Products');
+        $products = $productRepository->findAll();
+        $args = array('products' => $products);
+
+        return $this->render('product/list_product.html.twig',$args);
     }
 
     /**

@@ -7,6 +7,41 @@
 {% block content %}
     <p>
         Voici les produits que nous vendons : <br>
-        TO DO : Afficher la liste de produits.
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Votre choix</th>
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    {% if (produit.stock is null) %}
+                        <td>0</td>
+                    {% else %}
+                        <td>product.stock</td>
+                        <td>
+                            <select name="{{ product.name }}" id="pet-select">
+                                {% for i in 0..{produit.name} %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            <tr>
+                {% for i 0..3 %}
+                    <td></td>
+                {% endfor %}
+                <td>
+                    <button type="submit" value="add"> Ajouter </button>
+                </td>
+            </tr>
+        </table>
     </p>
 {% endblock %}
