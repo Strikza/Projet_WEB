@@ -1,15 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
+    {# Stylesheet pour la bare de menu (principalement) #}
     <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"/>
+    {# Stylesheet général et spécifique au site #}
+    <link rel="stylesheet" href="{{ asset('css/main_layout.css') }}" type="text/css" />
     {% block stylesheets_2 %} {% endblock %}
 {% endblock %}
 
 {% block body %}
     <div id="banner_top">
         <header>
-            {% include '/main/banner_top.html.twig' with {'user' : user} %}
+            {{ render(controller('App\\Controller\\BannerTopController::bannerTopAction')) }}
         </header>
     </div>
     <div id="menu">

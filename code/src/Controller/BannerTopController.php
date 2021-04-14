@@ -2,21 +2,20 @@
 
 namespace App\Controller;
 
-use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class HomeController
+ * Class BannerTopController
  * @package App\Controller
  */
-class HomeController extends AbstractController
+class BannerTopController extends AbstractController
 {
     /**
-     * @Route("/", name="home_home")
+     * @return Response
      */
-    public function homeAction(): Response
+    public function bannerTopAction(): Response
     {
         $id = $this->getParameter('id');
 
@@ -25,6 +24,7 @@ class HomeController extends AbstractController
         $user = $userRepository->find($id);
 
         $args = ['user' => $user];
-        return $this->render('common/home.html.twig',$args);
+
+        return $this->render('/main/banner_top.html.twig', $args);
     }
 }
