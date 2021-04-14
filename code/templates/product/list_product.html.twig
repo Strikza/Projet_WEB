@@ -19,23 +19,23 @@
                 <tr>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
-                    <td>{{ product.price }}</td>
-                    {% if (produit.stock is null) %}
+                    <td>{{ product.price }} €</td>
+                    {# {% if (product.stock is null) %}
                         <td>0</td>
-                    {% else %}
-                        <td>product.stock</td>
-                        <td>
-                            <select name="{{ product.name }}" id="pet-select">
-                                {% for i in 0..{produit.name} %}
-                                <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
-                        </td>
-                    {% endif %}
+                    {% else %} #}
+                    <td>{{ product.stock }}</td>
+                    <td>
+                        <select name="{{ product.name }}" id="pet-select">
+                            {% for i in 0..product.stock %}
+                            <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    {# {% endif %} #}
                 </tr>
             {% endfor %}
             <tr>
-                {% for i 0..3 %}
+                {% for i in 0..3 %}
                     <td></td>
                 {% endfor %}
                 <td>
