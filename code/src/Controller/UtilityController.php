@@ -9,6 +9,7 @@ use App\Entity\Users;
 
 class UtilityController extends AbstractController
 {
+<<<<<<< HEAD
     protected $user;
 
     public function setUser(){
@@ -18,6 +19,8 @@ class UtilityController extends AbstractController
         $userRepository = $em->getRepository('App:Users');
         $this->user = $userRepository->find($id);
     }
+=======
+>>>>>>> main
 
     public function isConnect($user, $type, $controller){
         switch ($type){
