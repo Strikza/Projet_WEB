@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  */
 
-class MenuController extends AbstractController
+class MenuController extends UtilityController
 {
     /**
      * @return Response

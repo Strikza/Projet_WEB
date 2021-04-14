@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/connection")
  */
 
-class ConnectionController extends AbstractController
+class ConnectionController extends UtilityController
 {
     /**
      * @Route("/co", name="connection_connection")

@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class HomeController
  * @package App\Controller
  */
-class HomeController extends AbstractController
+class HomeController extends UtilityController
 {
     /**
      * @Route("/", name="home_home")

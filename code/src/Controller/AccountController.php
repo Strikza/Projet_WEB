@@ -12,9 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/account")
  */
 
-class AccountController extends AbstractController
+class AccountController extends UtilityController
 {
-    /**
+
+
+        /**
      * @Route("/create", name="account_create")
      */
     public function createAction(): Response
@@ -26,9 +28,10 @@ class AccountController extends AbstractController
         $user = $userRepository->find($id);
 
         //Vérifie que l'utilisateur n'est pas authentifié
-        if(!is_null($user)) {
+        /*if(!is_null($user)) {
             throw $this->createNotFoundException('Vous êtes connecté(e) à un compte, veuillez vous déconnecter !');
-        }
+        }*/
+        $this->isConnect($user, 0, $this);
 
         $args = ['user' => $user];
         return $this->render('account/create_account.html.twig',$args);
@@ -46,9 +49,10 @@ class AccountController extends AbstractController
         $user = $userRepository->find($id);
 
         //Vérifie si l'utilisateur est un client
-        if(is_null($user) || $user->getIsAdmin()) {
+        /*if(is_null($user) || $user->getIsAdmin()) {
             throw $this->createNotFoundException('Vous devez être connecté(e) comme client pour avoir accès à cette page !');
-        }
+        }*/
+        $this->isConnect($user, 2, $this);
 
         $args = ['user' => $user];
         return $this->render('account/edit_account.html.twig',$args);
@@ -66,9 +70,10 @@ class AccountController extends AbstractController
         $user = $userRepository->find($id);
 
         //Vérifie si l'utilisateur est un administrateur
-        if(is_null($user) || !($user->getIsAdmin())) {
+        /*if(is_null($user) || !($user->getIsAdmin())) {
             throw $this->createNotFoundException('Vous devez être connecté(e) comme administrateur pour avoir accès à cette page !');
-        }
+        }*/
+        $this->isConnect($user, 1, $this);
 
         $args = ['user' => $user];
         return $this->render('account/manage_account.html.twig',$args);
