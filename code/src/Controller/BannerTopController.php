@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class BannerTopController
  * @package App\Controller
  */
-class BannerTopController extends AbstractController
+class BannerTopController extends UtilityController
 {
     /**
      * @return Response

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/cart")
  */
 
-class CartController extends AbstractController
+class CartController extends UtilityController
 {
 
     /**

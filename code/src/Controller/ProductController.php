@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route ("/product")
  */
-class ProductController extends AbstractController
+class ProductController extends UtilityController
 {
     /**
      * @Route("/", name="product_list")
