@@ -12,7 +12,7 @@
 {% block body %}
     <div id="banner_top">
         <header>
-            {% include '/main/banner_top.html.twig' with {'user' : user} %}
+            {{ render(controller('App\\Controller\\BannerTopController::bannerTopAction')) }}
         </header>
     </div>
     <div id="menu">
