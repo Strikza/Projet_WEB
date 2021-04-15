@@ -2,52 +2,47 @@
 
 namespace App\Controller;
 
-use App\Entity\Carts;
-use App\Entity\Products;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
-use Doctrine\Persistence\Mapping\ClassMetadata;
-use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Users;
 
 class UtilityController extends AbstractController
 {
-    /*protected $user;*/
-    protected $productRepository;
-
-    protected function getEntityManager() : EntityManagerInterface {
+    private function getEntityManager() : EntityManagerInterface {
         return $this->getDoctrine()->getManager();
     }
 
-    /* Retourne le repertoire d'utilisateurs */
-    public function getUserRepository() : EntityRepository {
-        return $this->getEntityManager()->getRepository('App:Users');
+    // Retourne tous les utilisateurs
+    /**
+     * @return array<int, object>
+     */
+    protected function getUsers() {
+        return $this->getEntityManager()->getRepository('App:Users')->findAll();
     }
 
-    /* Retourne le repertoire de produits */
-    public function getProductRepository() : EntityRepository {
-        $this->productRepository = $this->getEntityManager()->getRepository('App:Products');
-        return $this->getEntityManager()->getRepository('App:Products');
+    // Retourne tous les produits
+    /**
+     * @return array<int, object>
+     */
+    protected function getProducts() {
+        return $this->getEntityManager()->getRepository('App:Products')->findAll();
     }
 
-    /* Retourne le repertoire de paniers */
-    public function getCartRepository() : EntityRepository {
-        return $this->getEntityManager()->getRepository('App:Carts');
+    // Retourne tous les paniers
+    /**
+     * @return array<int, object>
+     */
+    protected function getCarts() {
+        return $this->getEntityManager()->getRepository('App:Carts')->findAll();
     }
 
-    /* Récupère l'utilisateur (utilisateur existant ou null) */
-
-    public function getUser() : ?Users {
+    // Récupère l'utilisateur (utilisateur existant ou null)
+    protected function getUser() : ?Users {
         $id = $this->getParameter('id');
-        $userRepository = $this->getUserRepository();
-
-        return $userRepository->find($id);
+        return $this->getEntityManager()->getRepository('App:Users')->find($id);
     }
 
-    /* Permet de restreindre l'accès à une page,  */
+    /* Permet de restreindre l'accès à une page, selon le type entré en paramètre  */
     public function setRestriction($type){
         $user = $this->getUser();
         switch ($type){

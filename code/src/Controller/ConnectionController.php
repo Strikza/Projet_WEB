@@ -19,7 +19,7 @@ class ConnectionController extends UtilityController
      */
     public function connectionAction(): Response
     {
-        //Vérifie que l'utilisateur n'est pas authentifié
+        //Vérifie que l'utilisateur n'est pas authentifié (type = 0)
         $this->setRestriction(0);
 
         $args = ['user' => $this->getUser()];

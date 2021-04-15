@@ -20,7 +20,7 @@ class CartController extends UtilityController
      */
     public function displayAction(): Response
     {
-        //Vérifie que l'utilisateur est un client
+        //Vérifie que l'utilisateur est un client (type = 1)
         $this->setRestriction(1);
 
         return $this->render('cart/display_cart.html.twig');
@@ -30,7 +30,7 @@ class CartController extends UtilityController
      */
     public function addAction(): Response
     {
-        //Vérifie que l'utilisateur est un client
+        //Vérifie que l'utilisateur est un client (type = 1)
         $this->setRestriction(1);
 
         return $this->render('user/cart.html.twig');

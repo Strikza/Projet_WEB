@@ -33,7 +33,7 @@ class AccountController extends UtilityController
      */
     public function editAction(): Response
     {
-        //Vérifie que l'utilisateur est un client
+        //Vérifie que l'utilisateur est un client (type = 1)
         $this->setRestriction(1);
 
         $args = ['user' => $this->getUser()];
@@ -45,7 +45,7 @@ class AccountController extends UtilityController
      */
     public function manageAction(): Response
     {
-        //Vérifie que l'utilisateur est un administrateur
+        //Vérifie que l'utilisateur est un administrateur (type = 2)
         $this->setRestriction(2);
 
         $args = ['user' => $this->getUser()];
