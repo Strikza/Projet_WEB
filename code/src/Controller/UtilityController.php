@@ -18,7 +18,7 @@ class UtilityController extends AbstractController
     /*protected $user;*/
     protected $productRepository;
 
-    private function getEntityManager() : EntityManagerInterface {
+    protected function getEntityManager() : EntityManagerInterface {
         return $this->getDoctrine()->getManager();
     }
 

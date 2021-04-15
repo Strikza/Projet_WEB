@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use function Symfony\Component\Translation\t;
 
 /**
  * Class ProductController
@@ -23,7 +24,7 @@ class ProductController extends UtilityController
 
 
         //Recupère le repertoire de produits
-        $productRepository = $this->getProductRepository();
+        $productRepository = $this->getEntityManager()->getRepository("App:Carts");
         $args = array('products' => $productRepository);
 
         return $this->render('product/list_product.html.twig',$args);
