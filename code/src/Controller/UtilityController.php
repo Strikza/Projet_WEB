@@ -12,6 +12,7 @@ class UtilityController extends AbstractController
         return $this->getDoctrine()->getManager();
     }
 
+
     // Retourne tous les utilisateurs
     /**
      * @return array<int, object>
@@ -20,12 +21,26 @@ class UtilityController extends AbstractController
         return $this->getEntityManager()->getRepository('App:Users')->findAll();
     }
 
+
     // Retourne tous les produits
     /**
      * @return array<int, object>
      */
     protected function getProducts() {
         return $this->getEntityManager()->getRepository('App:Products')->findAll();
+    }
+
+
+    // Compte le nombre d'objet de la table produit
+    protected function countProducts(): int{
+        $products = $this->getProducts();
+        $n = 0;
+
+        foreach ($products as $product){
+            $n++;
+        }
+
+        return $n;
     }
 
     // Retourne tous les paniers
@@ -36,13 +51,15 @@ class UtilityController extends AbstractController
         return $this->getEntityManager()->getRepository('App:Carts')->findAll();
     }
 
+
     // Récupère l'utilisateur (utilisateur existant ou null)
     protected function getUser() : ?Users {
         $id = $this->getParameter('id');
         return $this->getEntityManager()->getRepository('App:Users')->find($id);
     }
 
-    /* Permet de restreindre l'accès à une page, selon le type entré en paramètre  */
+
+    // Permet de restreindre l'accès à une page, selon le type entré en paramètre
     public function setRestriction($type){
         $user = $this->getUser();
         switch ($type){

@@ -2,11 +2,13 @@
 
 {% block title %}Produits{% endblock %}
 
-{% block stylesheets_2 %} {% endblock %}
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/list_product.css') }}" type="text/css" />
+{% endblock %}
 
 {% block content %}
     <p>
-        Voici les produits que nous vendons : <br>
+        <div class="presentation_products">Voici les produits que nous vendons : <br></div>
         <table>
             <tr>
                 <th>Nom</th>
