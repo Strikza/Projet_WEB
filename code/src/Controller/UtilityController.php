@@ -22,6 +22,19 @@ class UtilityController extends AbstractController
     }
 
 
+    // Récupère l'utilisateur via son identifiant (utilisateur existant ou null)
+    protected function getUserById($id): ?Users {
+        return $this->getEntityManager()->getRepository('App:Users')->find($id);
+    }
+
+
+    // Récupère l'utilisateur (utilisateur existant ou null)
+    protected function getUser() : ?Users {
+        $id = $this->getParameter('id');
+        return $this->getEntityManager()->getRepository('App:Users')->find($id);
+    }
+
+
     // Retourne tous les produits
     /**
      * @return array<int, object>
@@ -43,19 +56,13 @@ class UtilityController extends AbstractController
         return $n;
     }
 
+
     // Retourne tous les paniers
     /**
      * @return array<int, object>
      */
     protected function getCarts() {
         return $this->getEntityManager()->getRepository('App:Carts')->findAll();
-    }
-
-
-    // Récupère l'utilisateur (utilisateur existant ou null)
-    protected function getUser() : ?Users {
-        $id = $this->getParameter('id');
-        return $this->getEntityManager()->getRepository('App:Users')->find($id);
     }
 
 
