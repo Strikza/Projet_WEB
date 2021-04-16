@@ -34,8 +34,8 @@ class AccountController extends UtilityController
      */
     public function editAction(): Response
     {
-        //Vérifie que l'utilisateur est un client (type = 1)
-        $this->setRestriction(1);
+        //Vérifie que l'utilisateur est un client (type = 2)
+        $this->setRestriction(2);
 
         $args = ['user' => $this->getUser()];
         return $this->render('account/edit_account.html.twig',$args);
@@ -46,8 +46,8 @@ class AccountController extends UtilityController
      */
     public function manageAction(): Response
     {
-        //Vérifie que l'utilisateur est un administrateur (type = 2)
-        $this->setRestriction(2);
+        //Vérifie que l'utilisateur est un administrateur (type = 1)
+        $this->setRestriction(1);
 
         $args = ['users' => $this->getUsers()];
         return $this->render('account/manage_account.html.twig',$args);

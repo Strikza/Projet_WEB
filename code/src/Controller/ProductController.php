@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Products;
+use App\Form\ProductType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,8 +21,8 @@ class ProductController extends UtilityController
      */
     public function listAction(): Response
     {
-        //Vérifie si l'utilisateur est un client (type = 1)
-        $this->setRestriction( 1);
+        //Vérifie que l'utilisateur est un client (type = 2)
+        $this->setRestriction( 2);
 
         //Recupère les produits
         $args = array('products' => $this->getProducts());
@@ -28,12 +32,26 @@ class ProductController extends UtilityController
     /**
      * @Route("/add", name="product_add")
      */
-    public function addAction(): Response
+    public function addAction(Request $request): Response
     {
-        //Vérifie si l'utilisateur est un administrateur (type = 2)
-        $this->setRestriction(2);
+        //Vérifie que l'utilisateur est un administrateur (type = 1)
+        $this->setRestriction(1);
 
-        return $this->render('product/add_product.html.twig');
+        $product = new Products();
+        $form = $this->createForm(ProductType::class, $product);
+        $form->add('submit',SubmitType::class,['label' => 'Créer']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getEntityManager();
+
+            $em->persist($product);
+            $em->flush();
+
+            $this->addFlash('info', 'Le produit a bien été créé et ajouter à la base');
+        }
+
+        return $this->render('product/add_product.html.twig', ["form_add_product" => $form->createView()]);
     }
 
 }
