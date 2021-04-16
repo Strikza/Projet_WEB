@@ -16,12 +16,12 @@ class CartController extends UtilityController
 {
 
     /**
-     * @Route("/list", name="cart_display")
+     * @Route("/", name="cart_display")
      */
     public function displayAction(): Response
     {
-        //Vérifie que l'utilisateur est un client (type = 1)
-        $this->setRestriction(1);
+        //Vérifie que l'utilisateur est un client (type = 2)
+        $this->setRestriction(2);
 
         return $this->render('cart/display_cart.html.twig');
     }
@@ -30,8 +30,8 @@ class CartController extends UtilityController
      */
     public function addAction(): Response
     {
-        //Vérifie que l'utilisateur est un client (type = 1)
-        $this->setRestriction(1);
+        //Vérifie que l'utilisateur est un client (type = 2)
+        $this->setRestriction(2);
 
         return $this->render('user/cart.html.twig');
     }

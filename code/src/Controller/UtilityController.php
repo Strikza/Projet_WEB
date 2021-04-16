@@ -8,7 +8,7 @@ use App\Entity\Users;
 
 class UtilityController extends AbstractController
 {
-    private function getEntityManager() : EntityManagerInterface {
+    protected function getEntityManager() : EntityManagerInterface {
         return $this->getDoctrine()->getManager();
     }
 
@@ -47,15 +47,15 @@ class UtilityController extends AbstractController
         $user = $this->getUser();
         switch ($type){
             case 1 :
-                //Vérifie que l'utilisateur est un client
-                if(is_null($user) || $user->getIsAdmin()) {
-                    throw $this->createNotFoundException('Vous devez être connecté(e) en tant que client pour avoir accès à cette page !');
-                }
-                break;
-            case 2 :
                 //Vérifie que l'utilisateur est un administrateur
                 if(is_null($user) || !($user->getIsAdmin())) {
                     throw $this->createNotFoundException('Vous devez être connecté(e) en tant qu\'administrateur pour avoir accès à cette page !');
+                }
+                break;
+            case 2 :
+                //Vérifie que l'utilisateur est un client
+                if(is_null($user) || $user->getIsAdmin()) {
+                    throw $this->createNotFoundException('Vous devez être connecté(e) en tant que client pour avoir accès à cette page !');
                 }
                 break;
             case 3 :
