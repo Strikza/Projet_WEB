@@ -18,7 +18,8 @@ class MenuController extends UtilityController
      */
     public function menuAction(): Response
     {
-        $args = ['user' => $this->getUser()];
+        $args = ['user' => $this->getUser(),
+                 'nbProducts' => $this->countProducts()];
 
         return $this->render('main/menu.html.twig',$args);
     }
