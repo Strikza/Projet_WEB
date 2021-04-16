@@ -44,14 +44,16 @@ class ProductController extends UtilityController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getEntityManager();
-
             $em->persist($product);
             $em->flush();
 
-            $this->addFlash('info', 'Le produit a bien été créé et ajouter à la base');
-        }
+            $this->addFlash('info', 'Le produit a bien été créé et ajouter à la base !');
+            return $this->redirectToRoute('home_home');
+        } else {
 
-        return $this->render('product/add_product.html.twig', ["form_add_product" => $form->createView()]);
+            $this->addFlash('info', 'Le formulaire n\' pas été correctement rempli !');
+            return $this->render('product/add_product.html.twig', ["form_add_product" => $form->createView()]);
+        }
     }
 
 }
