@@ -2,10 +2,41 @@
 
 {% block title %}Gérer les utilisateurs{% endblock %}
 
-{% block stylesheets_2 %} {% endblock %}
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/manage_account.css') }}" type="text/css" />
+{% endblock %}
 
 {% block content %}
+    <h1>Gestion des utilisateurs :</h1>
     <p>
-        TO DO : Faire la page pour gérer les comptes.
+        <table>
+            <tr>
+                <th>Identifiant</th>
+                <th>Mot de passe</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Anniversaire</th>
+            </tr>
+            {% for user in users %}
+                {% dump(user) %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td >{{ user.password }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.birth }}</td>
+                    {% if user.isadmin is not same as(1) %}
+                    <td>
+                        <a href="{{ path('account_delete', {'iduser': user.id}) }}"><input type="button" value="delete"></a>
+                    </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    <a href="{{ path('account_addTest') }}"><input type="button" value="add_test"></a>
+                </td>
+            </tr>
+        </table>
     </p>
 {% endblock %}
