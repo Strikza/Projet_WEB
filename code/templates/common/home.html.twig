@@ -14,7 +14,7 @@
             {% endfor %}
         </ul>
     </div>
-    <p>
+    <h1>
     Bonjour à vous
     {% if user is null %}
      ! <br>
@@ -23,11 +23,11 @@
     {% else %}
      {{ user.firstname }} ! <br>
     {% endif %}
+    </h1>
+    <p>
     Bienvenue sur le site de commande de Stud'eCook ! <br>
     Ici vous trouverez des aliments à commander et bien plus ;) <br>
-    <div class="app_link">
-        N'hésitez pas à installer notre application : <br>
-    </div>
-    <a href="https://play.google.com/store/apps/details?id=com.mobile.app.studecook&hl=en_US&gl=US">petit lien vers le playstore tu connais</a>
+    N'hésitez pas à installer notre application : <br>
+    <a class="app_link" href="https://play.google.com/store/apps/details?id=com.mobile.app.studecook&hl=en_US&gl=US">Stud'eCook sur le playstore</a>
     </p>
 {% endblock %}

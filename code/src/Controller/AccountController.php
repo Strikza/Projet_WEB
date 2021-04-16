@@ -62,8 +62,8 @@ class AccountController extends UtilityController
      */
     public function deleteAction($iduser): Response
     {
-        //Vérifie que l'utilisateur est un administrateur (type = 2)
-        $this->setRestriction(2);
+        //Vérifie que l'utilisateur est un administrateur (type = 1)
+        $this->setRestriction(1);
 
         $user = $this->getUserById($iduser);
         $em = $this->getEntityManager();
@@ -84,8 +84,8 @@ class AccountController extends UtilityController
      */
     public function addTestAction(): Response
     {
-        //Vérifie que l'utilisateur est un administrateur (type = 2)
-        $this->setRestriction(2);
+        //Vérifie que l'utilisateur est un administrateur (type = 1)
+        $this->setRestriction(1);
 
         $em = $this->getEntityManager();
 

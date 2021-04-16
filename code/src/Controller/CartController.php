@@ -33,6 +33,7 @@ class CartController extends UtilityController
         //Vérifie que l'utilisateur est un client (type = 2)
         $this->setRestriction(2);
 
+
         return $this->render('user/cart.html.twig');
     }
 
