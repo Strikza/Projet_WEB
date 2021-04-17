@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Users;
+use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,13 +23,27 @@ class AccountController extends UtilityController
         /**
      * @Route("/create", name="account_create")
      */
-    public function createAction(): Response
+    public function createAction(Request $request): Response
     {
         //Vérifie que l'utilisateur n'est pas authentifié
         $this->setRestriction( 0);
 
-        $args = ['user' => $this->getUser()];
-        return $this->render('account/create_account.html.twig',$args);
+        $user = new Users();
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->add('submit',SubmitType::class,['label' => 'Créer']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getEntityManager();
+
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('info', 'Le compte a bien été créé');
+        }
+
+        return $this->render('account/create_account.html.twig', ["form_create_account" => $form->createView()]);
     }
 
     /**

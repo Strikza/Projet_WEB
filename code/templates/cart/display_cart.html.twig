@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'main/main_layout.html.twig' %}
 
 {% block title %} Panier {% endblock %}
@@ -43,4 +44,23 @@
             </tr>
         </table>
     </p>
+=======
+{% extends 'main/main_layout.html.twig' %}
+
+{% block title %} Panier {% endblock %}
+
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/display_cart.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <h1>Voici le contenu de votre panier : <br></h1>
+    <table>
+        <tr>
+            <th>Nom Produit</th>
+            <th>Prix (Pour 1 unité)</th>
+            <th>Quantité</th>
+        </tr>
+    </table>
+>>>>>>> main
 {% endblock %}

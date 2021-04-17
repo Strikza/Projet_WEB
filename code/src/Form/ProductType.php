@@ -16,7 +16,11 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name', TextType::class,
+<<<<<<< HEAD
                 ['label' => 'Libelle : ',])
+=======
+                ['label' => 'libelle'])
+>>>>>>> main
             ->add('description', TextareaType::class,
                 ['label'=> 'Description : ',
                 'required' => false])
