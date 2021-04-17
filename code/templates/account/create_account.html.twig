@@ -2,10 +2,11 @@
 
 {% block title %}Créer un compte{% endblock %}
 
-{% block stylesheets_2 %} {% endblock %}
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/create_account.css') }}" type="text/css" />
+{% endblock %}
 
 {% block content %}
-    <p>
-        TO DO : Faire le formulaire de création de compte.
-    </p>
+    <h1>Inscription :</h1>
+    {{ form(form_create_account) }}
 {% endblock %}

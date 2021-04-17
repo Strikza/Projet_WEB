@@ -2,11 +2,11 @@
 
 {% block title %}Ajouter un produit {% endblock %}
 
-{% block stylesheets_2 %} {% endblock %}
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/add_product.css') }}" type="text/css" />
+{% endblock %}
 
 {% block content %}
-    <p>
-        Ajoutez un nouveau produit :
-        {{ form(form_add_product) }}
-    </p>
+    <h1>Ajoutez un nouveau produit :</h1>
+    {{ form(form_add_product) }}
 {% endblock %}

@@ -2,11 +2,17 @@
 
 {% block title %} Panier {% endblock %}
 
-{% block stylesheets_2 %} {% endblock %}
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/display_cart.css') }}" type="text/css" />
+{% endblock %}
 
 {% block content %}
-    <p>
-        Voici le contenu de votre panier : <br>
-        TO DO : Afficher la panier de l'utilisateur.
-    </p>
+    <h1>Voici le contenu de votre panier : <br></h1>
+    <table>
+        <tr>
+            <th>Nom Produit</th>
+            <th>Prix (Pour 1 unité)</th>
+            <th>Quantité</th>
+        </tr>
+    </table>
 {% endblock %}
