@@ -62,6 +62,16 @@ class UtilityController extends AbstractController
         return $this->getEntityManager()->getRepository('App:Carts')->findAll();
     }
 
+    // Retourne tous les utilisateurs
+    /**
+     * @return array<int, object>
+     */
+    protected function getUsers(){
+        $id = $this->getParameter('id');
+        return $this->getUsersRepository()->findAll();
+    }
+
+
     // Permet de restreindre l'accès à une page, selon le type entré en paramètre
     // Ajoutez un autre cas si vous voulez ajouter une nouvelle restriction
     public function setRestriction($type){
