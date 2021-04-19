@@ -28,7 +28,8 @@ class UserType extends AbstractType
                 'widget' => 'choice',
                 'years' => range(date('Y')-100, date('Y')+5)] )
             ->add('isadmin', CheckboxType::class,
-            ['label' => 'Admin : '])
+                ['label' => 'Admin :' ,
+                'required' => false])
         ;
     }
 
