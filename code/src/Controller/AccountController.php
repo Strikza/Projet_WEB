@@ -54,7 +54,9 @@ class AccountController extends UtilityController
         //Vérifie que l'utilisateur est un client (type = 2)
         $this->setRestriction(2);
 
-        $args = ['user' => $this->getUser()];
+        $form = $this->createForm(UserType::class, $this->getUser());
+
+        $args = ['form_edit_account' => $form];
         return $this->render('account/edit_account.html.twig',$args);
     }
 
@@ -89,37 +91,6 @@ class AccountController extends UtilityController
 
         $em->remove($user);
         $em->flush();
-
-        return $this->redirectToRoute("account_manage");
-    }
-
-
-    /* Cette action est temporaire, et sert de test à l'action de supression */
-    /**
-     * @Route(
-     *     "/addTest",
-     *     name="account_addTest"
-     *     )
-     */
-    public function addTestAction(): Response
-    {
-        //Vérifie que l'utilisateur est un administrateur (type = 1)
-        $this->setRestriction(1);
-
-        $em = $this->getEntityManager();
-
-        $user = new Users();
-        $user->setUsername("test")
-            ->setPassword("test")
-            ->setIsAdmin(0)
-            ->setName("Test")
-            ->setFirstname("test");
-
-        dump($user);
-
-        $em->persist($user);
-        $em->flush();
-        dump($user);
 
         return $this->redirectToRoute("account_manage");
     }
