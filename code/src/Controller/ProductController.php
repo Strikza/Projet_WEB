@@ -88,8 +88,6 @@ class ProductController extends UtilityController
             $this->addFlash('info', 'Le produit a bien été créé et ajouter à la base !');
             return $this->redirectToRoute('home_home');
         } else {
-
-            $this->addFlash('info', 'Le formulaire n\' pas été correctement rempli !');
             return $this->render('product/add_product.html.twig', ["form_add_product" => $form->createView()]);
         }
     }

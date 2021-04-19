@@ -93,6 +93,8 @@ class AccountController extends UtilityController
         return $this->redirectToRoute("account_manage");
     }
 
+
+    /* Cette action est temporaire, et sert de test à l'action de supression */
     /**
      * @Route(
      *     "/addTest",
