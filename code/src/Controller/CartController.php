@@ -24,7 +24,7 @@ class CartController extends UtilityController
         $this->setRestriction(2);
 
         //Récupère les lignes de la table qui concerne l'utilisateur courant
-        $cart = $this->getCartsRepository()->findBy(['id_user_id' => $this->getUser()]);
+        $cart = $this->getCartsRepository()->findBy(['id_user' => $this->getUser()]);
 
         //Variable pour stocker
         $products = [];

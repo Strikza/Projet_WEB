@@ -20,7 +20,7 @@ class Carts
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(referencedColumnName="pk", nullable=false)
      */
     private $id_user;
 
