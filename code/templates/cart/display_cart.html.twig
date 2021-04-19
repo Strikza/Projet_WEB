@@ -18,15 +18,15 @@
                     <th>Nom</th>
                     <th>Prix</th>
                     <th>Quantité</th>
-                    <th></th>
+                    <th>Prix total</th>
                     <th></th>
                 </tr>
                 {% for product in products %}
                     <tr>
                         <td>{{ product.name }}</td>
-                        <td>{{ product.description }}</td>
-                        <td>{{ product.price }} €</td>
-                        <td>{{ product.stock }}</td>
+                        <td>{{ product.unit_price }}</td>
+                        <td>{{ product.totalQuantity }} €</td>
+                        <td>{{ product.totalPrice }}</td>
                         <td>
                             <select name="{{ product.id }}" id="pet-select">
                                 {% for i in 0..product.stock %}
