@@ -35,7 +35,10 @@ class ProductController extends UtilityController
                 if (0<$productQuantity || $productQuantity<$stock) {
 
                     $user = $this->getUser();
-                    $productInCart = $this->getCartsRepository()->findOneBy(['user' => $user, 'product' => $product]);
+                    $productInCart = $this->getCartsRepository()->findOneBy([
+                        'user' => $user,
+                        'product' => $product
+                    ]);
 
                     if (is_null($productInCart)) {
                         $cart = new Carts();
@@ -47,8 +50,12 @@ class ProductController extends UtilityController
                     } else {
                         $productInCart->setQuantity($productInCart->getQuantity()+$productQuantity);
                     }
-                    $this->getEntityManager()->flush();
 
+                    //Change la quantité de stock disponible
+                    $productToChange = $this->getProductsRepository()->find($productId);
+                    $productToChange->setStock($productToChange->getStock()-$productQuantity);
+
+                    $this->getEntityManager()->flush();
                 } elseif ($productQuantity != 0) {
                     throw $this->createNotFoundException('ERROR FORMULAIRE : quantité de produits invalide');
                 }

@@ -23,7 +23,21 @@ class CartController extends UtilityController
         //Vérifie que l'utilisateur est un client (type = 2)
         $this->setRestriction(2);
 
-        return $this->render('cart/display_cart.html.twig');
+        //Récupère les lignes de la table qui concerne l'utilisateur courant
+        $cart = $this->getCartsRepository()->findBy(['id_user_id' => $this->getUser()]);
+
+        //Variable pour stocker
+        $products = [];
+        $totalQuantity = 0;
+        $totalPrice = 0.0;
+
+        foreach ($cart as $productOfCard) {
+
+        }
+        $args = [
+            'products' => $products,
+        ];
+        return $this->render('cart/display_cart.html.twig', $args);
     }
     /**
      * @Route("/add", name="cart_add")

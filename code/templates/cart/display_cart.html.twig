@@ -11,38 +11,40 @@
         {% if products is empty %}
             <h1> Voici le contenu de votre panier : </h1>
         {% else %}
-        TO DO : Afficher la panier de l'utilisateur.
-        <table>
-            <tr>
-                <th>Nom</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-                <th>Total</th>
-                <th></th>
-            </tr>
-            {% for product in products %}
+            TO DO : Afficher la panier de l'utilisateur.
+            <table>
                 <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.price }} €</td>
-                    <td>{{ product.stock }}</td>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.price }} €</td>
+                        <td>{{ product.stock }}</td>
+                        <td>
+                            <select name="{{ product.id }}" id="pet-select">
+                                {% for i in 0..product.stock %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    {% for i in 0..3 %}
+                        <td></td>
+                    {% endfor %}
                     <td>
-                        <select name="{{ product.id }}" id="pet-select">
-                            {% for i in 0..product.stock %}
-                                <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                        </select>
+                        <button type="submit" value="add"> Ajouter </button>
                     </td>
                 </tr>
-            {% endfor %}
-            <tr>
-                {% for i in 0..3 %}
-                    <td></td>
-                {% endfor %}
-                <td>
-                    <button type="submit" value="add"> Ajouter </button>
-                </td>
-            </tr>
+            {% endif %}
         </table>
+
     </p>
 {% endblock %}
