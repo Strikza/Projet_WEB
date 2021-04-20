@@ -9,36 +9,38 @@
 {% block content %}
     <p>
         <div class="presentation_products">Voici les produits : <br></div>
-        <table>
-            <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Prix</th>
-                <th>Stock</th>
-                <th>Choix</th>
-            </tr>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.price }} €</td>
-                    <td>{{ product.stock }}</td>
-                    <td>
-                        <select name="{{ product.id }}" id="pet-select">
-                            {% for i in 0..product.stock %}
-                            <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                </tr>
-            {% endfor %}
-            <tr>
-                {% for i in 0..3 %}
-                    <td></td>
-                {% endfor %}
-                <td>
-                    <button type="submit" value="add">Commander</button>
-                </td>
-            </tr>
-        </table>
+        <div>
+            <form action="{{ path('product_list') }}" method="post">
+                <table>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Stock</th>
+                        <th>Choix</th>
+                    </tr>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.price }} €</td>
+                            <td>{{ product.stock }}</td>
+                            <td>
+                                <select name="{{ product.id }}" id="pet-select">
+                                    {% for i in 0..product.stock %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>
+                            <input type="submit" value="AJOUTER" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
 {% endblock %}

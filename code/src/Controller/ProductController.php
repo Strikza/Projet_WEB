@@ -32,7 +32,7 @@ class ProductController extends UtilityController
                 $product = $this->getProductsRepository()->find($productId);
                 $stock = $product->getStock();
 
-                if (0<$productQuantity || $productQuantity<$stock) {
+                if (0<$productQuantity && $productQuantity<=$stock) {
 
                     $user = $this->getUser();
                     $productInCart = $this->getCartsRepository()->findOneBy([
