@@ -64,7 +64,8 @@ class AccountController extends UtilityController
             $em->persist($cur_user);
             $em->flush();
 
-            $this->addFlash('info', 'Le compte a bien été créé');
+            $this->addFlash('info', 'Le compte a bien été modifié');
+            return $this->redirectToRoute("product_list");
         }
 
         $args = ['form_edit_account' => $form->createView()];
