@@ -48,14 +48,26 @@ class AccountController extends UtilityController
     /**
      * @Route("/edit", name="account_edit")
      */
-    public function editAction(): Response
+    public function editAction(Request $request): Response
     {
         //Vérifie que l'utilisateur est un client (type = 2)
         $this->setRestriction(2);
+        $cur_user = $this->getUser();
 
-        $form = $this->createForm(UserType::class, $this->getUser());
+        $form = $this->createForm(UserType::class, $cur_user);
+        $form->add('submit',SubmitType::class,['label' => 'Créer']);
+        $form->handleRequest($request);
 
-        $args = ['form_edit_account' => $form];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getEntityManager();
+
+            $em->persist($cur_user);
+            $em->flush();
+
+            $this->addFlash('info', 'Le compte a bien été créé');
+        }
+
+        $args = ['form_edit_account' => $form->createView()];
         return $this->render('account/edit_account.html.twig',$args);
     }
 

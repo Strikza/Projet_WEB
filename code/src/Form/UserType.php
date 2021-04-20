@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -27,9 +28,8 @@ class UserType extends AbstractType
                 ['label' => 'Date de naissance : ',
                 'widget' => 'choice',
                 'years' => range(date('Y')-100, date('Y')+5)] )
-            ->add('isadmin', CheckboxType::class,
-                ['label' => 'Admin :' ,
-                'required' => false])
+            ->add('isadmin', HiddenType::class,
+                ['data' => 0])
         ;
     }
 
