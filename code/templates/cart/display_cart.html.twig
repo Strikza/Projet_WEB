@@ -12,7 +12,6 @@
             <h1> Le contenu de votre panier est vide :( </h1>
         {% else %}
             <h1> Votre panier : </h1>
-            TO DO : Afficher la panier de l'utilisateur.
             <table>
                 <tr>
                     <th>Nom</th>
@@ -24,28 +23,36 @@
                 {% for product in products %}
                     <tr>
                         <td>{{ product.name }}</td>
-                        <td>{{ product.unit_price }}</td>
-                        <td>{{ product.totalQuantity }} €</td>
-                        <td>{{ product.totalPrice }}</td>
+                        <td>{{ product.unit_price }} €</td>
+                        <td>{{ product.total_quantity }}</td>
+                        <td>{{ product.total_price }} €</td>
                         <td>
-                            <select name="{{ product.id }}" id="pet-select">
-                                {% for i in 0..product.stock %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
+                            <button name="{{ product.id }}" type="submit">
+                                SUPPRIMER
+                            </button>
                         </td>
                     </tr>
                 {% endfor %}
                 <tr>
-                    {% for i in 0..3 %}
-                        <td></td>
-                    {% endfor %}
+                    <td>TOTAL</td>
+                    <td></td>
+                    <td>{{ totalQuantity }}</td>
+                    <td>{{ totalPrice }} €</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>
-                        <button type="submit" value="add"> Ajouter </button>
+                        <button type="submit" value="command"> COMMANDER </button>
+                    </td>
+                    <td>
+                        <button type="submit" value="discard"> VIDER </button>
                     </td>
                 </tr>
-            {% endif %}
-        </table>
+            </table>
+        {% endif %}
 
     </p>
 {% endblock %}
