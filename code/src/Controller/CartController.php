@@ -57,16 +57,82 @@ class CartController extends UtilityController
         ];
         return $this->render('cart/display_cart.html.twig', $args);
     }
+
     /**
-     * @Route("/add", name="cart_add")
+     * @Route("/res", name="cart_restore")
      */
-    public function addAction(): Response
+    private function restoreAction($cartId): void
+    {
+        //Récupère le produit du panier correspondant
+        $productInCart = $this->getCartsRepository()->findOneBy(['id_product' => $cartId]);
+
+        //Change la quantité de stock disponible
+        $productToChange = $this->getProductsRepository()->find($productInCart->getIdProduct()->getId());
+        $productToChange->setStock(($productToChange->getStock())-($productInCart->getQuantity()));
+
+        //Supprime le produit du panier
+        $this->getEntityManager()->remove($cartId);
+    }
+
+    /**
+     * @Route("/rem", name="cart_remove")
+     */
+    public function removeAction($cartId): Response
     {
         //Vérifie que l'utilisateur est un client (type = 2)
         $this->setRestriction(2);
 
+        //Remet le produit en stock et le supprime du panier
+        $this->restoreAction($cartId);
 
-        return $this->render('user/cart.html.twig');
+        //Confirme les changements à la base
+        $this->getEntityManager()->flush();
+
+        return $this->redirectToRoute('cart_display');
+    }
+
+    /**
+     * @Route("/dis", name="cart_discard")
+     */
+    public function discardAction(): Response
+    {
+        //Vérifie que l'utilisateur est un client (type = 2)
+        $this->setRestriction(2);
+
+        //Récupère le panier de l'utilisateur courant
+        $userCart = $this->getCartsRepository()->findBy(['id_user'=> $this->getUser()]);
+
+        //Remet chaque produit en stock et le supprime du panier
+        foreach ($userCart as $productOfCart) {
+            $this->restoreAction($productOfCart->getId());
+        }
+
+        //Confirme les changements à la base
+        $this->getEntityManager()->flush();
+
+        return $this->redirectToRoute('cart_display');
+    }
+
+    /**
+     * @Route("/ord", name="cart_order")
+     */
+    public function orderAction(): Response
+    {
+        //Vérifie que l'utilisateur est un client (type = 2)
+        $this->setRestriction(2);
+
+        //Récupère le panier de l'utilisateur courant
+        $userCart = $this->getCartsRepository()->findBy(['id_user'=> $this->getUser()]);
+
+        //Supprime chaque produit du panier
+        foreach ($userCart as $productOfCart) {
+            $this->getEntityManager()->remove($productOfCart->getId());
+        }
+
+        //Confirme les changements à la base
+        $this->getEntityManager()->flush();
+
+        return $this->redirectToRoute('cart_display');
     }
 
 

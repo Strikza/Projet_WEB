@@ -36,8 +36,8 @@ class ProductController extends UtilityController
 
                     $user = $this->getUser();
                     $productInCart = $this->getCartsRepository()->findOneBy([
-                        'user' => $user,
-                        'product' => $product
+                        'id_user' => $user,
+                        'id_product' => $product
                     ]);
 
                     if (is_null($productInCart)) {
