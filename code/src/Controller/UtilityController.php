@@ -41,19 +41,6 @@ class UtilityController extends AbstractController
     }
 
 
-    // Compte le nombre d'objet de la table produit
-    protected function countProducts(): int{
-        $products = $this->getProductsRepository()->findAll();
-        $n = 0;
-
-        foreach ($products as $product){
-            $n++;
-        }
-
-        return $n;
-    }
-
-
     // Retourne tous les paniers
     /**
      * @return array<int, object>

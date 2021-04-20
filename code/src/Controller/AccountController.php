@@ -15,7 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("/account")
  */
-
 class AccountController extends UtilityController
 {
 
