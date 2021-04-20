@@ -41,11 +41,15 @@ class CartController extends UtilityController
             $totalQuantity += $productOfCard->getQuantity();
 
             $product = [
+                'id' => $productRef->getId(),
                 'name' => $productRef->getName(),
                 'unit_price' => $productRef->getPrice(),
                 'total_quantity' => $productOfCard->getQuantity(),
-                'total_price' => $price];
+                'total_price' => $price
+            ];
+            $products[] = $product;
         }
+
         $args = [
             'products' => $products,
             'totalQuantity' => $totalQuantity,
