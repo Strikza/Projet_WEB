@@ -58,6 +58,20 @@ class UtilityController extends AbstractController
         return $this->getUsersRepository()->findAll();
     }
 
+    // Restore le stock d'un produit, et le supprime du panier
+    protected function restoreAction($cartId): void
+    {
+        //Récupère le produit du panier correspondant
+        $productInCart = $this->getCartsRepository()->findOneBy(['id' => $cartId]);
+
+        //Change la quantité de stock disponible
+        $productToChange = $this->getProductsRepository()->find($productInCart->getIdProduct()->getId());
+        $productToChange->setStock(($productToChange->getStock())+($productInCart->getQuantity()));
+
+        //Supprime le produit du panier
+        $this->getEntityManager()->remove($productInCart);
+    }
+
 
     // Permet de restreindre l'accès à une page, selon le type entré en paramètre
     // Ajoutez un autre cas si vous voulez ajouter une nouvelle restriction

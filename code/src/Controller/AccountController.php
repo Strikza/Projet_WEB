@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\UserType;
+use App\Controller\CartController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -99,7 +100,13 @@ class AccountController extends UtilityController
         $user = $this->getUserById($iduser);
         $em = $this->getEntityManager();
 
-        //TODO : Faire la vidange du panier de l'utilisateur courant
+        //Récupère le panier de l'utilisateur courant
+        $userCart = $this->getCartsRepository()->findBy(['id_user'=> $this->getUser()]);
+
+        //Remet chaque produit en stock et le supprime du panier
+        foreach ($userCart as $productOfCart) {
+            $this->restoreAction($productOfCart->getId());
+        }
 
         $em->remove($user);
         $em->flush();

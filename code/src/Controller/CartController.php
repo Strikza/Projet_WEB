@@ -59,24 +59,7 @@ class CartController extends UtilityController
     }
 
     /**
-     * @Route("/res", name="cart_restore")
-     */
-    private function restoreAction($cartId): void
-    {
-        //Récupère le produit du panier correspondant
-        $productInCart = $this->getCartsRepository()->findOneBy(['id' => $cartId]);
-
-        //Change la quantité de stock disponible
-        $productToChange = $this->getProductsRepository()->find($productInCart->getIdProduct()->getId());
-        $productToChange->setStock(($productToChange->getStock())+($productInCart->getQuantity()));
-
-        //Supprime le produit du panier
-        $this->getEntityManager()->remove($productInCart);
-    }
-
-    /**
-     * @Route("/rem", name="cart_remove")
-     * @param $cartId
+     * @Route("/rem/{cartId}", name="cart_remove")
      */
     public function removeAction($cartId): Response
     {
@@ -84,7 +67,7 @@ class CartController extends UtilityController
         $this->setRestriction(2);
 
         //Remet le produit en stock et le supprime du panier
-        CartController::restoreAction($cartId);
+        $this->restoreAction($cartId);
 
         //Confirme les changements à la base
         $this->getEntityManager()->flush();
@@ -105,7 +88,7 @@ class CartController extends UtilityController
 
         //Remet chaque produit en stock et le supprime du panier
         foreach ($userCart as $productOfCart) {
-            CartController::restoreAction($productOfCart->getId());
+            $this->restoreAction($productOfCart->getId());
         }
 
         //Confirme les changements à la base
