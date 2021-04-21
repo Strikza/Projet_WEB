@@ -1,2 +1,9 @@
-- ./routes/service.yaml :
-	- l.7 : user: '<utilisateur connecté>'
+- /routes/service.yaml :
+	- l.7 - 11 : id: '<utilisateur connecté>' + Commentaire d'explication
+
+	- l.38 - 43 : App\Service\CountProducts:
+        			 public: false
+
+    		     app.countproducts:
+        			alias: App\Service\CountProducts
+        			public: true
