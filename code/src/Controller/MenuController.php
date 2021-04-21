@@ -28,3 +28,8 @@ class MenuController extends UtilityController
         return $this->render('main/menu.html.twig',$args);
     }
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 

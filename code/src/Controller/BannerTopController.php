@@ -22,3 +22,8 @@ class BannerTopController extends UtilityController
         return $this->render('/main/banner_top.html.twig', $args);
     }
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 

@@ -121,3 +121,8 @@ class CartController extends UtilityController
         return $this->redirectToRoute('cart_display');
     }
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 

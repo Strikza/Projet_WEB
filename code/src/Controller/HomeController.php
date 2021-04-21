@@ -22,3 +22,8 @@ class HomeController extends UtilityController
         return $this->render('common/home.html.twig',$args);
     }
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 

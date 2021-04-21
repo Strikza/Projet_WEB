@@ -40,3 +40,8 @@ class UserType extends AbstractType
         ]);
     }
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 

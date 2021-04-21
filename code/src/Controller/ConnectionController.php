@@ -36,3 +36,8 @@ class ConnectionController extends UtilityController
         return $this->redirectToRoute('home_home');
     }
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 
