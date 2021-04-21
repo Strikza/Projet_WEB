@@ -25,7 +25,7 @@ class Products
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, options={"default"=""})
      */
     private $description;
 
