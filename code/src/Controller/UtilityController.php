@@ -103,3 +103,8 @@ class UtilityController extends AbstractController
         }
     }
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 

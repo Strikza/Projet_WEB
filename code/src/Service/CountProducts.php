@@ -13,3 +13,8 @@ class CountProducts
     }
 
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 

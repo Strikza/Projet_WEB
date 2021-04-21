@@ -93,3 +93,8 @@ class ProductController extends UtilityController
     }
 
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 

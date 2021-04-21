@@ -20,7 +20,7 @@ class AccountController extends UtilityController
 {
 
 
-        /**
+    /**
      * @Route("/create", name="account_create")
      */
     public function createAction(Request $request): Response
@@ -115,3 +115,8 @@ class AccountController extends UtilityController
         return $this->redirectToRoute("account_manage");
     }
 }
+
+/*  Authors :
+ *      - ANDRIANARIVONY Henintsoa
+ *      - GOUBEAU Samuel
+ */ 
