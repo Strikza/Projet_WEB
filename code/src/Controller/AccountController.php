@@ -41,6 +41,7 @@ class AccountController extends UtilityController
             $em->flush();
 
             $this->addFlash('info', 'Le compte a bien été créé');
+            return $this->redirectToRoute("home_home");
         }
 
         return $this->render('account/create_account.html.twig', ["form_create_account" => $form->createView()]);
@@ -56,7 +57,7 @@ class AccountController extends UtilityController
         $cur_user = $this->getUser();
 
         $form = $this->createForm(UserType::class, $cur_user);
-        $form->add('submit',SubmitType::class,['label' => 'Créer']);
+        $form->add('submit',SubmitType::class,['label' => 'Editer']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

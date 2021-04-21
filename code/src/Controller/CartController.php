@@ -59,7 +59,9 @@ class CartController extends UtilityController
     }
 
     /**
-     * @Route("/rem/{cartId}", name="cart_remove")
+     * @Route("/rem/{cartId}",
+     *     name="cart_remove",
+     *     requirements={"cardId": "[0-9]+"})
      */
     public function removeAction($cartId): Response
     {
