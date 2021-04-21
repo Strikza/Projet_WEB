@@ -41,19 +41,6 @@ class UtilityController extends AbstractController
     }
 
 
-    // Compte le nombre d'objet de la table produit
-    protected function countProducts(): int{
-        $products = $this->getProductsRepository()->findAll();
-        $n = 0;
-
-        foreach ($products as $product){
-            $n++;
-        }
-
-        return $n;
-    }
-
-
     // Retourne tous les paniers
     /**
      * @return array<int, object>
@@ -69,6 +56,20 @@ class UtilityController extends AbstractController
     protected function getUsers(){
         $id = $this->getParameter('id');
         return $this->getUsersRepository()->findAll();
+    }
+
+    // Restore le stock d'un produit, et le supprime du panier
+    protected function restoreAction($cartId): void
+    {
+        //Récupère le produit du panier correspondant
+        $productInCart = $this->getCartsRepository()->findOneBy(['id' => $cartId]);
+
+        //Change la quantité de stock disponible
+        $productToChange = $this->getProductsRepository()->find($productInCart->getIdProduct()->getId());
+        $productToChange->setStock(($productToChange->getStock())+($productInCart->getQuantity()));
+
+        //Supprime le produit du panier
+        $this->getEntityManager()->remove($productInCart);
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\UserType;
+use App\Controller\CartController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("/account")
  */
-
 class AccountController extends UtilityController
 {
 
@@ -41,6 +41,7 @@ class AccountController extends UtilityController
             $em->flush();
 
             $this->addFlash('info', 'Le compte a bien été créé');
+            return $this->redirectToRoute("home_home");
         }
 
         return $this->render('account/create_account.html.twig', ["form_create_account" => $form->createView()]);
@@ -49,14 +50,27 @@ class AccountController extends UtilityController
     /**
      * @Route("/edit", name="account_edit")
      */
-    public function editAction(): Response
+    public function editAction(Request $request): Response
     {
         //Vérifie que l'utilisateur est un client (type = 2)
         $this->setRestriction(2);
+        $cur_user = $this->getUser();
 
-        $form = $this->createForm(UserType::class, $this->getUser());
+        $form = $this->createForm(UserType::class, $cur_user);
+        $form->add('submit',SubmitType::class,['label' => 'Editer']);
+        $form->handleRequest($request);
 
-        $args = ['form_edit_account' => $form];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getEntityManager();
+
+            $em->persist($cur_user);
+            $em->flush();
+
+            $this->addFlash('info', 'Le compte a bien été modifié');
+            return $this->redirectToRoute("product_list");
+        }
+
+        $args = ['form_edit_account' => $form->createView()];
         return $this->render('account/edit_account.html.twig',$args);
     }
 
@@ -87,7 +101,13 @@ class AccountController extends UtilityController
         $user = $this->getUserById($iduser);
         $em = $this->getEntityManager();
 
-        //TODO : Faire la vidange du panier de l'utilisateur courant
+        //Récupère le panier de l'utilisateur courant
+        $userCart = $this->getCartsRepository()->findBy(['id_user'=> $this->getUser()]);
+
+        //Remet chaque produit en stock et le supprime du panier
+        foreach ($userCart as $productOfCart) {
+            $this->restoreAction($productOfCart->getId());
+        }
 
         $em->remove($user);
         $em->flush();

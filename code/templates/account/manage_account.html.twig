@@ -24,7 +24,9 @@
                     <td >{{ user.password }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.firstname }}</td>
-                    <td>{{ user.birth }}</td>
+                    <td>
+                        {% if user.birth is not null %} {{ user.birth|date("Y/m/d") }} {% endif %}
+                    </td>
                     {% if user.isadmin is not same as(1) %}
                     <td>
                         <a href="{{ path('account_delete', {'iduser': user.id}) }}"><input type="button" value="delete"></a>
