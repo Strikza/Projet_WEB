@@ -2,35 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d3dc0ed-f061-4b46-ae1c-6bd195fbf621" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/._Create_Service.docx" beforeDir="false" afterPath="$PROJECT_DIR$/._Create_Service.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/._projet.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/._projet.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/add_product.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/add_product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/connection_account.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/connection_account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/create_account.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/create_account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/display_cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/display_cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/edit_account.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/edit_account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/list_product.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/list_product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/main_layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/main_layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/public/css/manage_account.css" beforeDir="false" afterPath="$PROJECT_DIR$/code/public/css/manage_account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Controller/AccountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/BannerTopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Controller/BannerTopController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Controller/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/ConnectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Controller/ConnectionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Controller/MenuController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Controller/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/UserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Controller/UtilityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Controller/UtilityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Entity/Carts.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Entity/Carts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Entity/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Entity/Products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Entity/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Entity/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Form/ProductType.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Form/ProductType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Form/UserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/Service/CountProducts.php" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/Service/CountProducts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/templates/account/manage_account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/code/templates/account/manage_account.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,6 +194,7 @@
       <workItem from="1618903436628" duration="70000" />
       <workItem from="1618931816583" duration="5787000" />
       <workItem from="1619000378871" duration="63000" />
+      <workItem from="1619018080993" duration="3496000" />
     </task>
     <servers />
   </component>
