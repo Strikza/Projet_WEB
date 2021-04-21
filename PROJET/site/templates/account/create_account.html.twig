@@ -1,0 +1,17 @@
+{% extends 'main/main_layout.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/create_account.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <h1>Créez votre compte :</h1>
+    {{ form(form_create_account) }}
+{% endblock %}
+
+{# Authors :
+    - ANDRIANARIVONY Henintsoa
+    - GOUBEAU Samuel
+#}

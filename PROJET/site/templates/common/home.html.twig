@@ -1,0 +1,38 @@
+{% extends 'main/main_layout.html.twig' %}
+
+{% block title %} Accueil {% endblock %}
+
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div>
+        <ul>
+            {% for msg in app.session.flashBag.get('info') %}
+                <li class="flash">{{ msg }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <h1>
+    Bonjour à vous
+    {% if user is null %}
+     ! <br>
+    {% elseif  user.isadmin %}
+     administrateur ! <br>
+    {% else %}
+     {{ user.firstname }} ! <br>
+    {% endif %}
+    </h1>
+    <p>
+    Bienvenue sur le site de commande de Stud'eCook ! <br>
+    Ici vous trouverez des aliments à commander et bien plus ;) <br>
+    N'hésitez pas à installer notre application : <br>
+    <a class="app_link" href="https://play.google.com/store/apps/details?id=com.mobile.app.studecook&hl=en_US&gl=US">Stud'eCook sur le playstore</a>
+    </p>
+{% endblock %}
+
+{# Authors :
+    - ANDRIANARIVONY Henintsoa
+    - GOUBEAU Samuel
+#}

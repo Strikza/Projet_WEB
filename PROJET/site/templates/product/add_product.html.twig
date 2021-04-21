@@ -1,0 +1,17 @@
+{% extends 'main/main_layout.html.twig' %}
+
+{% block title %}Ajouter un produit {% endblock %}
+
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/add_product.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <h1>Ajoutez un nouveau produit :</h1>
+    {{ form(form_add_product) }}
+{% endblock %}
+
+{# Authors :
+    - ANDRIANARIVONY Henintsoa
+    - GOUBEAU Samuel
+#}

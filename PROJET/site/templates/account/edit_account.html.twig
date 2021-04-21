@@ -1,0 +1,17 @@
+{% extends 'main/main_layout.html.twig' %}
+
+{% block title %}Editer mon profil{% endblock %}
+
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/edit_account.css') }}" type="text/css" />
+    {% endblock %}
+
+{% block content %}
+    <h1>Editez votre compte :</h1>
+    {{ form(form_edit_account) }}
+{% endblock %}
+
+{# Authors :
+    - ANDRIANARIVONY Henintsoa
+    - GOUBEAU Samuel
+#}

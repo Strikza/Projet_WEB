@@ -1,0 +1,65 @@
+{% extends 'main/main_layout.html.twig' %}
+
+{% block title %} Panier {% endblock %}
+
+{% block stylesheets_2 %}
+<link rel="stylesheet" href="{{ asset('css/display_cart.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <p>
+        {% if products is empty %}
+            <h1> Le contenu de votre panier est vide :( </h1>
+        {% else %}
+            <h1> Votre panier : </h1>
+            <table>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Prix total</th>
+                    <th></th>
+                </tr>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.unit_price }} €</td>
+                        <td>{{ product.total_quantity }}</td>
+                        <td>{{ product.total_price }} €</td>
+                        <td>
+                            <a href="{{ path('cart_remove',{'cartId': product.id}) }}">
+                                <input type="button" value="SUPPRIMER"/>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>TOTAL</td>
+                    <td></td>
+                    <td>{{ totalQuantity }}</td>
+                    <td>{{ totalPrice }} €</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td>
+                        <a href="{{ path('cart_order') }}">
+                            <input type="button" value="COMMANDER"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('cart_discard') }}">
+                            <input type="button" value="VIDER"/>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        {% endif %}
+
+    </p>
+{% endblock %}
+
+{# Authors :
+    - ANDRIANARIVONY Henintsoa
+    - GOUBEAU Samuel
+#}

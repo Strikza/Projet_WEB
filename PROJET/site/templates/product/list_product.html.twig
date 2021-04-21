@@ -1,0 +1,58 @@
+{% extends 'main/main_layout.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block stylesheets_2 %}
+    <link rel="stylesheet" href="{{ asset('css/list_product.css') }}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div>
+        <ul>
+            {% for msg in app.session.flashBag.get('info') %}
+                <li class="flash">{{ msg }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <p>
+        <div class="presentation_products">Voici les produits : <br></div>
+        <div>
+            <form action="{{ path('product_list') }}" method="post">
+                <table>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Stock</th>
+                        <th>Choix</th>
+                    </tr>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.price }} €</td>
+                            <td>{{ product.stock }}</td>
+                            <td>
+                                <select name="{{ product.id }}" id="pet-select">
+                                    {% for i in 0..product.stock %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>
+                            <input type="submit" value="AJOUTER" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+{% endblock %}
+
+{# Authors :
+    - ANDRIANARIVONY Henintsoa
+    - GOUBEAU Samuel
+#}
